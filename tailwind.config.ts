@@ -19,7 +19,7 @@ export default {
     themes: [
       {
         customtheme: {
-          primary: "#5763EC",
+          primary: "#3B82F6",
           "primary-content": "#ffffff",
           secondary: "#6C757D",
           "secondary-content": "#ffffff",
