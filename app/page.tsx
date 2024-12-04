@@ -26,6 +26,17 @@ export default function Home() {
       setStatus("Error: Base URI cannot be empty.");
       return;
     }
+
+    try {
+      // Call the setBaseURI function on the smart contract
+      const tx = await contract.methods
+        .setBaseURI(baseURI)
+        .send({ from: account });
+      setStatus("Base URI updated successfully!");
+    } catch (error) {
+      console.error("Error setting base URI:", error);
+      setStatus("Error setting base URI");
+    }    
   };
 
   const submitMintNFT = async () => {
