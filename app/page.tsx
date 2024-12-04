@@ -12,6 +12,15 @@ export default function Home() {
           <h1 className="text-2xl font-bold">Booknify</h1>
         </div>
       </header>
+
+      {/* Content */}
+      {!account ? (
+        <div className="flex flex-col lg:flex-row gap-[30px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
+          <button className="btn btn-primary">Connect Wallet</button>
+        </div>
+      ) : (
+        <div>Dashboard</div>
+      )}
     </div>
   );
 }
