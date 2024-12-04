@@ -79,7 +79,7 @@ export default function Home() {
           <div className="flex justify-center items-center mb-4">
             {status && (
               <p
-                className={`mt-2 text-sm font-semibold ${
+                className={`mt-2 text-base font-semibold ${
                   status.startsWith("Error") ? "text-red-500" : "text-green-600"
                 }`}
               >
