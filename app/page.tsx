@@ -28,11 +28,12 @@ export default function Home() {
     }
 
     try {
-      // Call the setBaseURI function on the smart contract
+      // Call the setBaseURI function
       const tx = await contract.methods
         .setBaseURI(baseURI)
         .send({ from: account });
       setStatus("Base URI updated successfully!");
+      setBaseURI("");
     } catch (error) {
       console.error("Error setting base URI:", error);
       setStatus("Error setting base URI");
@@ -44,6 +45,16 @@ export default function Home() {
       setStatus("Error: Address cannot be empty.");
       return;
     }
+
+    try {
+      // Call the mint function
+      const tx = await contract.methods.mint(mintNFT).send({ from: account });
+      setStatus("Minting NFT is successfully!");
+      setMintNFT("");
+    } catch (error) {
+      console.error("Error Minting NFT:", error);
+      setStatus("Error Minting NFT");
+    }       
   };
 
   return (
@@ -85,7 +96,7 @@ export default function Home() {
                 <h2 className="text-lg font-bold mb-4">Base URI</h2>
                 <input
                   type="text"
-                  placeholder="URI"
+                  placeholder="Enter URI"
                   value={baseURI || ""}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setBaseURI(String(e.target.value) || "")
@@ -102,7 +113,7 @@ export default function Home() {
                 <h2 className="text-lg font-bold mb-4">Mint NFT</h2>
                 <input
                   type="text"
-                  placeholder="Address"
+                  placeholder="Enter Address"
                   value={mintNFT || ""}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setMintNFT(String(e.target.value) || "")
