@@ -1,8 +1,22 @@
 "use client";
 import { useState } from "react";
+import { web3, contract } from "./contract";
 
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
+
+  const connectWallet = async () => {
+    if (web3 && contract) {
+      try {
+        const accounts = await web3.eth.requestAccounts();
+        setAccount(accounts[0]);
+      } catch (error) {
+        console.error("Error accessing accounts:", error);
+      }
+    } else {
+      console.error("Web3 or contract is not initialized");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -16,7 +30,7 @@ export default function Home() {
       {/* Content */}
       {!account ? (
         <div className="flex flex-col lg:flex-row gap-[30px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
-          <button className="btn btn-primary">Connect Wallet</button>
+          <button className="btn btn-primary" onClick={connectWallet}>Connect Wallet</button>
         </div>
       ) : (
         <div>Dashboard</div>
