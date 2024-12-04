@@ -4,6 +4,9 @@ import { web3, contract } from "./contract";
 
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
+  const [status, setStatus] = useState<string>("");
+  const [baseURI, setBaseURI] = useState<string>("");
+  const [mintNFT, setMintNFT] = useState<string>("");
 
   const connectWallet = async () => {
     if (web3 && contract) {
@@ -15,6 +18,20 @@ export default function Home() {
       }
     } else {
       console.error("Web3 or contract is not initialized");
+    }
+  };
+
+  const submitBaseURI = async () => {
+    if (!baseURI || baseURI == "") {
+      setStatus("Error: Base URI cannot be empty.");
+      return;
+    }
+  };
+
+  const submitMintNFT = async () => {
+    if (!mintNFT || mintNFT == "") {
+      setStatus("Error: Address cannot be empty.");
+      return;
     }
   };
 
@@ -35,52 +52,62 @@ export default function Home() {
           </button>
         </div>
       ) : (
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-2">
+          {/* Status Section*/}
+          <div className="flex justify-center items-center mb-4">
+            {status && (
+              <p
+                className={`mt-2 text-sm font-semibold ${
+                  status.startsWith("Error") ? "text-red-500" : "text-green-600"
+                }`}
+              >
+                {status}
+              </p>
+            )}
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left Section: Mint and Burn */}
+            {/* Left Section: Base URI and Mint NFT */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              {/* Mint Section */}
+              {/* Base URI Section */}
               <div className="mb-8">
                 <h2 className="text-lg font-bold mb-4">Base URI</h2>
                 <input
                   type="text"
                   placeholder="URI"
-                  // value={mintAmount || ""}
-                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  //   setMintAmount(Number(e.target.value) || 0)
-                  // }
+                  value={baseURI || ""}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setBaseURI(String(e.target.value) || "")
+                  }
                   className="input input-bordered w-full mb-4"
                 />
-                <button
-                  className="btn btn-info w-full"
-                  // onClick={mintTokens}
-                >
+                <button className="btn btn-info w-full" onClick={submitBaseURI}>
                   Submit
                 </button>
               </div>
 
-              {/* Burn Section */}
+              {/* Mint NFT Section */}
               <div>
                 <h2 className="text-lg font-bold mb-4">Mint NFT</h2>
                 <input
                   type="text"
                   placeholder="Address"
-                  // value={burnAmount || ""}
-                  // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  //   setBurnAmount(Number(e.target.value) || 0)
-                  // }
+                  value={mintNFT || ""}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setMintNFT(String(e.target.value) || "")
+                  }
                   className="input input-bordered w-full mb-4"
                 />
                 <button
                   className="btn btn-success w-full"
-                  // onClick={mintTokens}
+                  onClick={submitMintNFT}
                 >
                   Submit
                 </button>
               </div>
             </div>
 
-            {/* Right Section: Token Balance */}
+            {/* Right Section: Information */}
             <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
               <p className="text-4xl font-semibold mb-4">
                 {/* {balance || "Loading..."} */}
