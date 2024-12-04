@@ -179,6 +179,12 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <footer>
+        <div className="flex justify-center mt-4">
+          <strong>Booknify © 2024</strong>
+        </div>
+      </footer>
     </div>
   );
 }
