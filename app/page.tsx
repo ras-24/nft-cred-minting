@@ -7,12 +7,14 @@ export default function Home() {
   const [status, setStatus] = useState<string>("");
   const [baseURI, setBaseURI] = useState<string>("");
   const [mintNFT, setMintNFT] = useState<string>("");
+  const [nftDetails, setNftDetails] = useState<{ name: string; symbol: string; owner: string; } | null>(null);
 
   const connectWallet = async () => {
     if (web3 && contract) {
       try {
         const accounts = await web3.eth.requestAccounts();
         setAccount(accounts[0]);
+        loadAccountInfo();
       } catch (error) {
         console.error("Error accessing accounts:", error);
       }
@@ -20,6 +22,23 @@ export default function Home() {
       console.error("Web3 or contract is not initialized");
     }
   };
+
+  const loadAccountInfo = async () => {
+    try {
+      const nftName = await contract.methods.name().call();
+      const nftSymbol = await contract.methods.symbol().call();
+      const nftOwner = await contract.methods.owner().call();
+
+      setNftDetails({
+        name: nftName,
+        symbol: nftSymbol,
+        owner: nftOwner,
+      });
+    } catch (error) {
+      console.error("Error fetching account info:", error);
+      setStatus("Error fetching account info");
+    }
+  }
 
   const submitBaseURI = async () => {
     if (!baseURI || baseURI == "") {
@@ -62,7 +81,7 @@ export default function Home() {
       {/* Header */}
       <header className="bg-blue-500 text-white py-4">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-2xl font-bold">Booknify</h1>
+          <h1 className="text-2xl font-bold">NFT Minting</h1>
         </div>
       </header>
 
@@ -79,7 +98,7 @@ export default function Home() {
           <div className="flex justify-center items-center mb-4">
             {status && (
               <p
-                className={`mt-2 text-sm font-semibold ${
+                className={`mt-2 text-base font-semibold ${
                   status.startsWith("Error") ? "text-red-500" : "text-green-600"
                 }`}
               >
@@ -131,12 +150,30 @@ export default function Home() {
 
             {/* Right Section: Information */}
             <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-              <p className="text-4xl font-semibold mb-4">
-                {/* {balance || "Loading..."} */}
-              </p>
-              <p className="text-lg font-bold mb-4">Name :</p>
-              <p className="text-lg font-bold mb-4">Symbol :</p>
-              <p className="text-lg font-bold mb-4">Owner :</p>
+              <div className="text-lg font-bold mb-4 flex items-center">
+                Name :{" "}
+                {nftDetails?.name ? (
+                  nftDetails.name
+                ) : (
+                  <div className="skeleton h-4 w-28 ml-2"></div>
+                )}
+              </div>
+              <div className="text-lg font-bold mb-4 flex items-center">
+                Symbol :{" "}
+                {nftDetails?.symbol ? (
+                  nftDetails.symbol
+                ) : (
+                  <div className="skeleton h-4 w-28 ml-2"></div>
+                )}
+              </div>
+              <div className="text-lg font-bold mb-4 flex items-center">
+                Owner :{" "}
+                {nftDetails?.owner ? (
+                  nftDetails.owner
+                ) : (
+                  <div className="skeleton h-4 w-28 ml-2"></div>
+                )}
+              </div>
               <hr className="w-full border-gray-300" />
             </div>
           </div>
