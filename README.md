@@ -41,7 +41,7 @@ Make sure you have MetaMask balance on Arbitrum Sepolia Testnet Network.
    ```
 6. Run project
    ```sh
-    npm run start
+    npm run dev
    ```
 
 ## License
