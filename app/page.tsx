@@ -112,7 +112,7 @@ export default function Home() {
             <div className="bg-white shadow-lg rounded-lg p-6">
               {/* Base URI Section */}
               <div className="mb-8">
-                <h2 className="text-lg font-bold mb-4">Base URI</h2>
+                <h2 className="text-sm md:text-lg font-bold mb-4">Base URI</h2>
                 <input
                   type="text"
                   placeholder="Enter URI"
@@ -129,7 +129,7 @@ export default function Home() {
 
               {/* Mint NFT Section */}
               <div>
-                <h2 className="text-lg font-bold mb-4">Mint NFT</h2>
+                <h2 className="text-sm md:text-lg font-bold mb-4">Mint NFT</h2>
                 <input
                   type="text"
                   placeholder="Enter Address"
@@ -150,7 +150,7 @@ export default function Home() {
 
             {/* Right Section: Information */}
             <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
-              <div className="text-lg font-bold mb-4 flex items-center">
+              <div className="text-sm md:text-lg font-bold mb-4 flex items-center">
                 Name :{" "}
                 {nftDetails?.name ? (
                   nftDetails.name
@@ -158,7 +158,7 @@ export default function Home() {
                   <div className="skeleton h-4 w-28 ml-2"></div>
                 )}
               </div>
-              <div className="text-lg font-bold mb-4 flex items-center">
+              <div className="text-sm md:text-lg font-bold mb-4 flex items-center">
                 Symbol :{" "}
                 {nftDetails?.symbol ? (
                   nftDetails.symbol
@@ -166,7 +166,7 @@ export default function Home() {
                   <div className="skeleton h-4 w-28 ml-2"></div>
                 )}
               </div>
-              <div className="text-lg font-bold mb-4 flex items-center">
+              <div className="text-sm md:text-lg font-bold mb-4 flex items-center">
                 Owner :{" "}
                 {nftDetails?.owner ? (
                   nftDetails.owner
