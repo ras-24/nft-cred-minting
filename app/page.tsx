@@ -2,11 +2,14 @@
 "use client";
 import { useState } from "react";
 import { web3, contract } from "./contract";
+import Link from 'next/link';
 
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [status, setStatus] = useState<string>("");
-  const [baseURI, setBaseURI] = useState<string>("");
+  const [baseURI, setBaseURI] = useState<string>(
+    "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreicmbo3risnjpnjovapj5kofs46ghllvdpmlj77pi4daxjmdnmlmve"
+  );
   const [mintNFT, setMintNFT] = useState<string>("");
   const [nftDetails, setNftDetails] = useState<{ name: string; symbol: string; owner: string; } | null>(null);
 
@@ -88,7 +91,13 @@ export default function Home() {
 
       {/* Content */}
       {!account ? (
-        <div className="flex flex-col lg:flex-row gap-[30px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
+        <div className="flex flex-col gap-[30px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
+          <strong>EDU Chain Testnet</strong>
+
+          <Link href="https://raas.gelato.network/rollups/details/public/open-campus-codex">
+            https://raas.gelato.network/rollups/details/public/open-campus-codex
+          </Link>
+
           <button className="btn btn-primary" onClick={connectWallet}>
             Connect Wallet
           </button>
@@ -117,7 +126,10 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Enter URI"
-                  value={baseURI || ""}
+                  value={
+                    baseURI ||
+                    "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreicmbo3risnjpnjovapj5kofs46ghllvdpmlj77pi4daxjmdnmlmve"
+                  }
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setBaseURI(String(e.target.value) || "")
                   }
