@@ -81,7 +81,7 @@ export default function Home() {
       {/* Header */}
       <header className="bg-blue-500 text-white py-4">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-2xl font-bold">NFT Minting</h1>
+          <h1 className="text-2xl font-bold">NFTCred Minting</h1>
         </div>
       </header>
 
@@ -182,7 +182,7 @@ export default function Home() {
 
       <footer>
         <div className="flex justify-center mt-4">
-          <strong>Booknify © 2024</strong>
+          <strong>NFTCred © 2025</strong>
         </div>
       </footer>
     </div>

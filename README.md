@@ -1,5 +1,5 @@
-# booknify-frontend
-Booknify (BNF) NFT ERC-721 Frontend
+# nft-cred-minting
+EduChain (EDC) NFT ERC-721 Frontend
 
 NFT Minting Dapp
 
@@ -15,17 +15,17 @@ This is an example of how you can set up this project locally. To get a local co
 
 ### Prerequisites
 1. You must have a MetaMask Wallet Account.
-2. We use Arbitrum Sepolia Testnet so we need to use a Arbitrum faucet to obtain test ether.
-Make sure you have MetaMask balance on Arbitrum Sepolia Testnet Network.
+2. We use EDU Chain Testnet so we need to use a EduChain faucet to obtain test token.
+Make sure you have MetaMask balance on EDU Chain Testnet Network.
 
 ### Installation
 1. Clone the repo
    ```sh
-   git clone https://github.com/ras-24/booknify-frontend.git
+   git clone https://github.com/ras-24/nft-cred-minting.git
    ```
-2. Go to booknify frontend directory
+2. Go to project directory
    ```sh
-   cd booknify-frontend
+   cd nft-cred-minting
    ```
 3. Install NPM packages
    ```sh
