@@ -91,13 +91,16 @@ export default function Home() {
 
       {/* Content */}
       {!account ? (
-        <div className="flex flex-col gap-[30px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
-          <strong>EDU Chain Testnet</strong>
-
-          <Link href="https://raas.gelato.network/rollups/details/public/open-campus-codex">
+        <div className="flex flex-col gap-[10px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
+          <h1 className="text-2xl font-bold">EDU Chain Testnet</h1>
+          <strong>Add Network</strong>
+          <Link target="_blank" href="https://raas.gelato.network/rollups/details/public/open-campus-codex">
             https://raas.gelato.network/rollups/details/public/open-campus-codex
           </Link>
-
+          <strong>Faucet</strong>
+          <Link target="_blank" href="https://www.hackquest.io/faucets/656476">
+            https://www.hackquest.io/faucets/656476
+          </Link>
           <button className="btn btn-primary" onClick={connectWallet}>
             Connect Wallet
           </button>
