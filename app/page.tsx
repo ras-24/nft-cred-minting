@@ -7,9 +7,7 @@ import Link from 'next/link';
 export default function Home() {
   const [account, setAccount] = useState<string | null>(null);
   const [status, setStatus] = useState<string>("");
-  const [baseURI, setBaseURI] = useState<string>(
-    "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreicmbo3risnjpnjovapj5kofs46ghllvdpmlj77pi4daxjmdnmlmve"
-  );
+  const [baseURI, setBaseURI] = useState<string>("");
   const [mintNFT, setMintNFT] = useState<string>("");
   const [nftDetails, setNftDetails] = useState<{ name: string; symbol: string; owner: string; } | null>(null);
 
@@ -94,7 +92,10 @@ export default function Home() {
         <div className="flex flex-col gap-[10px] mt-[20px] px-[30px] min-h-[80vh] justify-center items-center">
           <h1 className="text-2xl font-bold">EDU Chain Testnet</h1>
           <strong>Add Network</strong>
-          <Link target="_blank" href="https://raas.gelato.network/rollups/details/public/open-campus-codex">
+          <Link
+            target="_blank"
+            href="https://raas.gelato.network/rollups/details/public/open-campus-codex"
+          >
             https://raas.gelato.network/rollups/details/public/open-campus-codex
           </Link>
           <strong>Faucet</strong>
@@ -129,10 +130,7 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Enter URI"
-                  value={
-                    baseURI ||
-                    "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreicmbo3risnjpnjovapj5kofs46ghllvdpmlj77pi4daxjmdnmlmve"
-                  }
+                  value={baseURI || ""}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setBaseURI(String(e.target.value) || "")
                   }
@@ -191,6 +189,17 @@ export default function Home() {
                 )}
               </div>
               <hr className="w-full border-gray-300" />
+              <div className="text-sm md:text-lg font-bold mt-4 mb-2 flex items-center">
+                Base URI Example{" "}
+              </div>
+
+              <input
+                type="text"
+                value={
+                  "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreigygrvh6a7jayqnbao4ppj7q7iqgr254c6ze5mw2zidnrkur3hery"
+                }
+                className="input input-bordered w-full mb-4"
+              />
             </div>
           </div>
         </div>
