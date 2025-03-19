@@ -196,8 +196,9 @@ export default function Home() {
               <input
                 type="text"
                 value={
-                  "https://fuchsia-defeated-pelican-696.mypinata.cloud/ipfs/bafkreigygrvh6a7jayqnbao4ppj7q7iqgr254c6ze5mw2zidnrkur3hery"
+                  "ipfs://bafkreihcdeqfqaktnyun73cr5qu2atrslolvnsm2q4f6olmfqoc2byew3a"
                 }
+                readOnly
                 className="input input-bordered w-full mb-4"
               />
             </div>
