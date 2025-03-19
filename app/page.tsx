@@ -99,7 +99,7 @@ export default function Home() {
             https://raas.gelato.network/rollups/details/public/open-campus-codex
           </Link>
           <strong>Faucet</strong>
-          <Link target="_blank" href="https://www.hackquest.io/faucets/656476">
+          <Link className="mb-3" target="_blank" href="https://www.hackquest.io/faucets/656476">
             https://www.hackquest.io/faucets/656476
           </Link>
           <button className="btn btn-primary" onClick={connectWallet}>
